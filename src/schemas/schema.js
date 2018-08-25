@@ -5,13 +5,45 @@ import { makeExecutableSchema } from "graphql-tools";
 // Creacion del schema, es importante declarar
 // el Query root ya que este indica el endpoint
 const TYPE_DEF = `
+    # Entidad **Curso** dentro del sistema
     type Curso {
         id: ID!
         titulo: String!
+        descripcion: String!
+        profesor: Profesor
+        # Al utilizar @deprecated permite indicar que campos podemos eliminar en un futuro
+        raiting: Float @deprecated(reason: "No me interesa el **raiting** en el curso")
+        comentarios: [Comentario]
     }
     
+    # Entidad **Profesor** dentro del sistema
+    type Profesor {
+        id: ID!
+        nombre: String!
+        nacionalidad: String!
+        genero: Genero
+        cursos: [Curso]
+    }
+    
+    # Enumerador de **Genero**
+    enum Genero {
+        MASCULINO
+        FEMENINO
+    }
+    
+    # Entidad **Comentario** dentro del sistema
+    type Comentario {
+        id: ID!
+        nombre: String!
+        cuerpo: String!
+    }
+    
+    # **Root type Query** _endpoint_ principal
     type Query {
-        curso: [Curso]
+        cursos: [Curso]
+        profesores: [Profesor]
+        curso(id: Int): Curso
+        profesor(id: Int): Profesor
     }
 `;
 
