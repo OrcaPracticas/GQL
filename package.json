@@ -2,6 +2,7 @@
     "author": "<jorge.mendez.ortega@gmail.com>",
     "dependencies": {
         "body-parser": "1.18.3",
+        "casual": "^1.5.19",
         "express": "4.16.3",
         "graphql": "0.13.2",
         "graphql-server-express": "1.4.0",
@@ -14,7 +15,6 @@
         "babel-plugin-inline-json-import": "0.2.1",
         "babel-preset-env": "1.7.0",
         "babel-register": "^6.26.0",
-        "casual": "^1.5.19",
         "nodemon": "^1.18.3"
     },
     "license": "MIT",

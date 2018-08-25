@@ -1,9 +1,10 @@
 // se importa el makeExecutableSchema para que nuestra
 // constante se genere como un schema
-import { makeExecutableSchema } from "graphql-tools";
+import { makeExecutableSchema, addMockFunctionsToSchema } from "graphql-tools";
 
 // mockups
 import { MockComentarios, MockCursos, MockProfesores } from "./mockups";
+import { CasualComentarios, CasualCursos, CasualProfesores } from "./mockupsCasual";
 
 // Creacion del schema, es importante declarar
 // el Query root ya que este indica el endpoint
@@ -62,7 +63,7 @@ const RESOLVERS = {
         comentarios: () => MockComentarios,
     },
     Profesor: {
-        cursos: () => MockComentarios,
+        cursos: () => MockCursos,
         genero: () => "MASCULINO",
     },
 };
@@ -72,8 +73,29 @@ const RESOLVERS = {
  * a un esquema de GQL
  */
 const SCHEMA = makeExecutableSchema({
+    // Referencia al schema creados
     typeDefs: TYPE_DEF,
+    // Referencia a los resolvers.
     resolvers: RESOLVERS,
+});
+
+/**
+ * Crecion mocks utilizando casual
+ * serealiza la integracion con la addMockFunctionsToSchema
+ */
+addMockFunctionsToSchema({
+    // se indica el schema al que afectaremos
+    schema: SCHEMA,
+    // Definicion de los mocks a generar
+    mocks: {
+        Curso: () => CasualCursos,
+        Profesor: () => CasualProfesores,
+        Comentario: () => CasualComentarios,
+    },
+    // Permite utilizar la data de los resolvers que estan de clarados
+    // true : utiliza los resolvers
+    // false : utiliza el mock definido
+    perserveResolvers: true,
 });
 
 export default SCHEMA;
