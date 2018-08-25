@@ -2,6 +2,9 @@
 // constante se genere como un schema
 import { makeExecutableSchema } from "graphql-tools";
 
+// mockups
+import { MockComentarios, MockCursos, MockProfesores } from "./mockups";
+
 // Creacion del schema, es importante declarar
 // el Query root ya que este indica el endpoint
 const TYPE_DEF = `
@@ -48,11 +51,29 @@ const TYPE_DEF = `
 `;
 
 /**
+ * Declarando la capa de datos que utilizara resoler.
+ */
+const RESOLVERS = {
+    Query: {
+        cursos: () => MockCursos,
+    },
+    Curso: {
+        profesor: () => MockProfesores,
+        comentarios: () => MockComentarios,
+    },
+    Profesor: {
+        cursos: () => MockComentarios,
+        genero: () => "MASCULINO",
+    },
+};
+
+/**
  * Permite que el esquema declarado se tradusca
  * a un esquema de GQL
  */
 const SCHEMA = makeExecutableSchema({
     typeDefs: TYPE_DEF,
+    resolvers: RESOLVERS,
 });
 
 export default SCHEMA;

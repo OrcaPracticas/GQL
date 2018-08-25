@@ -1,0 +1,20 @@
+[
+    {
+        "id" : 1,
+        "titulo" : "Curso 1",
+        "descripcion" : "Esto es el cuso 1",
+        "raiting" : 0.5
+    },
+    {
+        "id" : 2,
+        "titulo" : "Curso 2",
+        "descripcion" : "Esto es el cuso 2",
+        "raiting" : 0.5
+    },
+    {
+        "id" : 3,
+        "titulo" : "Curso 3",
+        "descripcion" : "Esto es el cuso 3",
+        "raiting" : 0.5
+    }
+]
