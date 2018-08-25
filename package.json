@@ -1,0 +1,28 @@
+{
+    "author": "<jorge.mendez.ortega@gmail.com>",
+    "dependencies": {
+        "body-parser": "1.18.3",
+        "express": "4.16.3",
+        "graphql": "0.13.2",
+        "graphql-server-express": "1.4.0",
+        "graphql-tools": "3.1.1"
+    },
+    "description": "Practica con GQL",
+    "devDependencies": {
+        "babel-cli": "6.26.0",
+        "babel-minify": "0.4.3",
+        "babel-plugin-inline-json-import": "0.2.1",
+        "babel-preset-env": "1.7.0",
+        "babel-register": "^6.26.0",
+        "nodemon": "^1.18.3"
+    },
+    "license": "MIT",
+    "main": "index.js",
+    "name": "GQL",
+    "private": false,
+    "repository": "git@konami12:OrcaPracticas/GQL.git",
+    "scripts": {
+        "start": "nodemon ./launcher"
+    },
+    "version": "1.0.0"
+}
