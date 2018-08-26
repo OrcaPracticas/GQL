@@ -1,10 +1,9 @@
 // se importa el makeExecutableSchema para que nuestra
 // constante se genere como un schema
-import { makeExecutableSchema, addMockFunctionsToSchema } from "graphql-tools";
+import { makeExecutableSchema } from "graphql-tools";
 
-// mockups
-import { MockComentarios, MockCursos, MockProfesores } from "./mockups";
-import { CasualComentarios, CasualCursos, CasualProfesores } from "./mockupsCasual";
+// Modelos
+import { ModeloCurso, ModeloProfesor } from "../DB/models";
 
 // Creacion del schema, es importante declarar
 // el Query root ya que este indica el endpoint
@@ -56,15 +55,12 @@ const TYPE_DEF = `
  */
 const RESOLVERS = {
     Query: {
-        cursos: () => MockCursos,
-    },
-    Curso: {
-        profesor: () => MockProfesores,
-        comentarios: () => MockComentarios,
-    },
-    Profesor: {
-        cursos: () => MockCursos,
-        genero: () => "MASCULINO",
+        // permite extraer los datos de la la DB y
+        // con eager se lie indica que relaciones tiene
+        cursos: () => ModeloCurso.query().eager("[profesor, comentarios]"),
+        profesores: () => ModeloProfesor.query().eager("cursos"),
+        curso: (rootValue, args) => ModeloCurso.query().findById(args.id),
+        profesor: (rootValue, args) => ModeloProfesor.query().findById(args.id),
     },
 };
 
@@ -77,25 +73,6 @@ const SCHEMA = makeExecutableSchema({
     typeDefs: TYPE_DEF,
     // Referencia a los resolvers.
     resolvers: RESOLVERS,
-});
-
-/**
- * Crecion mocks utilizando casual
- * serealiza la integracion con la addMockFunctionsToSchema
- */
-addMockFunctionsToSchema({
-    // se indica el schema al que afectaremos
-    schema: SCHEMA,
-    // Definicion de los mocks a generar
-    mocks: {
-        Curso: () => CasualCursos,
-        Profesor: () => CasualProfesores,
-        Comentario: () => CasualComentarios,
-    },
-    // Permite utilizar la data de los resolvers que estan de clarados
-    // true : utiliza los resolvers
-    // false : utiliza el mock definido
-    perserveResolvers: true,
 });
 
 export default SCHEMA;
