@@ -15,8 +15,8 @@ class Comentario extends Model {
     static get relationMappings() {
         const RELATION_MAP = {
             curso: {
-                realation: Model.BelongsToOneRelation,
-                ModelCalss: Path.join(__dirname, "/Curso"),
+                relation: Model.BelongsToOneRelation,
+                modelClass: Path.join(__dirname, "/Curso"),
                 join: {
                     from: "comentarios.curso_id",
                     to: "cursos.id",

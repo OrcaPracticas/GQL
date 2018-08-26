@@ -15,19 +15,19 @@ class Curso extends Model {
     static get relationMappings() {
         const RELATION_MAP = {
             profesor: {
-                realation: Model.BelongsToOneRelation,
-                ModelCalss: Path.join(__dirname, "/Profesor"),
+                relation: Model.BelongsToOneRelation,
+                modelClass: Path.join(__dirname, "/Profesor"),
                 join: {
-                    from: "curso.profesor_id",
-                    to: "profesor.id",
+                    from: "cursos.profesor_id",
+                    to: "profesores.id",
                 },
             },
             comentarios: {
-                realation: Model.BelongsToOneRelation,
-                ModelCalss: Path.join(__dirname, "/Conmentario"),
+                relation: Model.HasManyRelation,
+                modelClass: Path.join(__dirname, "/Comentario"),
                 join: {
                     from: "cursos.id",
-                    to: "comentarios.curso_is",
+                    to: "comentarios.curso_id",
                 },
             },
         };

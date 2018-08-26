@@ -2,14 +2,14 @@
     "author": "<jorge.mendez.ortega@gmail.com>",
     "dependencies": {
         "body-parser": "1.18.3",
-        "casual": "^1.5.19",
+        "casual": "1.5.19",
         "express": "4.16.3",
         "graphql": "0.13.2",
         "graphql-server-express": "1.4.0",
         "graphql-tools": "3.1.1",
-        "knex": "^0.15.2",
-        "objection": "^1.2.3",
-        "sqlite3": "^4.0.2"
+        "knex": "0.15.2",
+        "objection": "1.2.3",
+        "sqlite3": "4.0.2"
     },
     "description": "Practica con GQL",
     "devDependencies": {
@@ -17,8 +17,9 @@
         "babel-minify": "0.4.3",
         "babel-plugin-inline-json-import": "0.2.1",
         "babel-preset-env": "1.7.0",
-        "babel-register": "^6.26.0",
-        "nodemon": "^1.18.3"
+        "babel-preset-stage-1": "6.24.1",
+        "babel-register": "6.26.0",
+        "nodemon": "1.18.3"
     },
     "license": "MIT",
     "main": "index.js",
