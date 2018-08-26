@@ -2,6 +2,7 @@ import Express from "express";
 import BodyParser from "body-parser";
 import { graphqlExpress, graphiqlExpress } from "graphql-server-express";
 import Schema from "./schemas";
+import "./DB/setup";
 
 const SERVER = Express();
 const PORT = 8080;
