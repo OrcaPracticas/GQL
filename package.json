@@ -26,7 +26,9 @@
     "private": false,
     "repository": "git@konami12:OrcaPracticas/GQL.git",
     "scripts": {
-        "start": "nodemon ./launcher"
+        "start": "nodemon ./launcher",
+        "db:migrate": "knex migrate:latest --knexfile=src/DB/knexfile.js",
+        "db:seed": "knex seed:run --knexfile=src/DB/knexfile.js"
     },
     "version": "1.0.0"
 }
