@@ -15,6 +15,12 @@ const ROOT_QUERY = `
         curso(id: Int): Curso
         profesor(id: Int): Profesor
     }
+    
+    type Mutation {
+        profesorAdd(profesor: newProfesor): Profesor
+        profesorEdit(id: Int!, profesor: editProfesor): Profesor
+        profesorDelete(id: Int!): Profesor
+    }
 `;
 
 /**
