@@ -14,6 +14,15 @@ const RESOLVERS = {
         comentarios: () => ModeloComentario.query().eager(),
         curso: (rootValue, args) => ModeloCurso.query().findById(args.id),
         profesor: (rootValue, args) => ModeloProfesor.query().findById(args.id),
+        buscar: (_, args) => {
+            return [
+                ModeloProfesor.query().findById(3),
+                ModeloCurso.query().findById(2),
+            ];
+        },
+    },
+    ResultadoBusqueda: {
+        __resolveType: object => ((object.nombre) ? "Profesor" : "Curso"),
     },
     Mutation: {
         profesorAdd: (_, args) => BuildMutation.query(ModeloProfesor, args).save,
