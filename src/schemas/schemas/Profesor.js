@@ -7,6 +7,18 @@ const PROFESORES_SCHEMA = `
         genero: Genero
         cursos: [Curso]
     }
+    
+    input newProfesor {
+        nombre: String!
+        nacionalidad: String!
+        genero: Genero
+    }
+    
+    input editProfesor{
+        nombre: String
+        nacionalidad: String
+        genero: Genero
+    }
 `;
 
 const GENERO_SCHEMA = `
