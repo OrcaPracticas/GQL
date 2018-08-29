@@ -9,6 +9,17 @@ const CURSO_SCHEMA = `
         raiting: Float @deprecated(reason: "No me interesa el **raiting** en el curso")
         comentarios: [Comentario]
     }
+    
+    input newCurso {
+        titulo: String!
+        descripcion: String!
+        raiting: Float
+    }
+    input editCurso {
+        titulo: String
+        descripcion: String
+        raiting: Float
+    }
 `;
 
 const COMENTARIOS_SCHEMA = `

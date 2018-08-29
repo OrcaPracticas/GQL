@@ -20,6 +20,10 @@ const ROOT_QUERY = `
         profesorAdd(profesor: newProfesor): Profesor
         profesorEdit(id: Int!, profesor: editProfesor): Profesor
         profesorDelete(id: Int!): Profesor
+        cursoAdd(curo: newCurso): Curso
+        cursoEdit(id: Int!, curso: editCurso): Curso
+        cursoDelete(id: Int!): Curso
+
     }
 `;
 
