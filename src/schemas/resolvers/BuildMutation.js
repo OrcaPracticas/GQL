@@ -26,7 +26,10 @@ class BuildMutation {
                 .then(data => this.modelo
                     .query()
                     .deleteById(...this.params)
-                    .then(() => data))
+                    .then((filas) => {
+                        if (filas > 0) return data;
+                        throw new Error(`El registro con el id ${this.params[0]} no se puede elmiar`);
+                    }))
         );
     }
 

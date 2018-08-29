@@ -14,7 +14,14 @@ const PORT = 8080;
 SERVER.use(
     "/gql",
     BodyParser.json(),
-    graphqlExpress({ schema: Schema }),
+    graphqlExpress({
+        schema: Schema,
+        formatError: error => ({
+            errorCode: "A55",
+            name: error.name,
+            mensaje: error.message,
+        }),
+    }),
 );
 
 /**
