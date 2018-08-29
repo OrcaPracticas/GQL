@@ -1,14 +1,19 @@
 {
     "author": "<jorge.mendez.ortega@gmail.com>",
     "dependencies": {
+        "apollo-client": "^2.4.1",
         "body-parser": "1.18.3",
         "casual": "1.5.19",
         "express": "4.16.3",
         "graphql": "0.13.2",
         "graphql-server-express": "1.4.0",
+        "graphql-tag": "^2.9.2",
         "graphql-tools": "3.1.1",
         "knex": "0.15.2",
         "objection": "1.2.3",
+        "react": "^16.4.2",
+        "react-apollo": "^2.1.11",
+        "react-dom": "^16.4.2",
         "sqlite3": "4.0.2"
     },
     "description": "Practica con GQL",
@@ -19,7 +24,8 @@
         "babel-preset-env": "1.7.0",
         "babel-preset-stage-1": "6.24.1",
         "babel-register": "6.26.0",
-        "nodemon": "1.18.3"
+        "nodemon": "1.18.3",
+        "react-scripts": "^1.1.5"
     },
     "license": "MIT",
     "main": "index.js",
