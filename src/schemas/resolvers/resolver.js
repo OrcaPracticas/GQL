@@ -1,5 +1,5 @@
 // Importacion de modelos referentes a la base de datos.
-import { ModeloCurso, ModeloProfesor } from "../../DB/models";
+import { ModeloCurso, ModeloProfesor, ModeloComentario } from "../../DB/models";
 import BuildMutation from "./BuildMutation";
 
 /**
@@ -11,6 +11,7 @@ const RESOLVERS = {
         // con eager se le indica que relaciones tiene cada tabla.
         cursos: () => ModeloCurso.query().eager("[profesor, comentarios]"),
         profesores: () => ModeloProfesor.query().eager("cursos"),
+        comentarios: () => ModeloComentario.query().eager(),
         curso: (rootValue, args) => ModeloCurso.query().findById(args.id),
         profesor: (rootValue, args) => ModeloProfesor.query().findById(args.id),
     },
@@ -21,6 +22,9 @@ const RESOLVERS = {
         cursoAdd: (_, args) => BuildMutation.query(ModeloCurso, args).save,
         cursoEdit: (_, args) => BuildMutation.query(ModeloCurso, args).edit,
         cursoDelete: (_, args) => BuildMutation.query(ModeloCurso, args).delete,
+        comentarioAdd: (_, args) => BuildMutation.query(ModeloComentario, args).save,
+        comentarioEdit: (_, args) => BuildMutation.query(ModeloComentario, args).edit,
+        comentarioDelete: (_, args) => BuildMutation.query(ModeloComentario, args).delete,
     },
 };
 

@@ -29,6 +29,16 @@ const COMENTARIOS_SCHEMA = `
         nombre: String!
         cuerpo: String!
     }
+
+    input newComentario {
+        nombre: String!
+        cuerpo: String!
+    }
+
+    input editComentario {
+        nombre: String
+        cuerpo: String
+    }
 `;
 
 
