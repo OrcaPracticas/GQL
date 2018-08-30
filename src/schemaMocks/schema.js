@@ -1,6 +1,6 @@
-// se importa el makeExecutableSchema para que nuestra
-// constante se genere como un schema
-import { makeExecutableSchema, addMockFunctionsToSchema } from "graphql-tools";
+// Importa ApolloServer que permite integrar los resolvers y typedef
+// importa gql el cual permite interpretar el schema.
+import { ApolloServer, gql } from "apollo-server-express";
 
 // mockups
 import { MockComentarios, MockCursos, MockProfesores } from "./mockups";
@@ -8,7 +8,7 @@ import { CasualComentarios, CasualCursos, CasualProfesores } from "./mockupsCasu
 
 // Creacion del schema, es importante declarar
 // el Query root ya que este indica el endpoint
-const TYPE_DEF = `
+const TYPE_DEF = gql`
     # Entidad **Curso** dentro del sistema
     type Curso {
         id: ID!
@@ -72,30 +72,21 @@ const RESOLVERS = {
  * Permite que el esquema declarado se tradusca
  * a un esquema de GQL
  */
-const SCHEMA = makeExecutableSchema({
+const SCHEMA = new ApolloServer({
     // Referencia al schema creados
     typeDefs: TYPE_DEF,
     // Referencia a los resolvers.
     resolvers: RESOLVERS,
-});
-
-/**
- * Crecion mocks utilizando casual
- * serealiza la integracion con la addMockFunctionsToSchema
- */
-addMockFunctionsToSchema({
-    // se indica el schema al que afectaremos
-    schema: SCHEMA,
-    // Definicion de los mocks a generar
+    formatError: error => ({
+        errorCode: "JMZ-mocks",
+        name: error.name,
+        mensaje: error.message,
+    }),
     mocks: {
         Curso: () => CasualCursos,
         Profesor: () => CasualProfesores,
         Comentario: () => CasualComentarios,
     },
-    // Permite utilizar la data de los resolvers que estan de clarados
-    // true : utiliza los resolvers
-    // false : utiliza el mock definido
-    perserveResolvers: true,
 });
 
 export default SCHEMA;
