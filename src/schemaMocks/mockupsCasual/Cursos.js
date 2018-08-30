@@ -6,7 +6,7 @@ const DATA = [];
 do {
     contador += 1;
     const SCHEMA = {
-        id: Casual.uuid,
+        id: contador,
         titulo: Casual.title,
         descripcion: Casual.description,
         raiting: Casual.random,

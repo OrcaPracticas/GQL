@@ -1,4 +1,4 @@
-import MockCursos from "./Cursos.json";
+import MockCursos from "./Cursos";
 import MockComentarios from "./Comentarios.json";
 import MockProfesores from "./Profesores.json";
 

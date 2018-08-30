@@ -1,13 +1,13 @@
-// se importa el makeExecutableSchema para que nuestra
-// constante se genere como un schema
-import { makeExecutableSchema } from "graphql-tools";
+// Importa ApolloServer que permite integrar los resolvers y typedef
+// importa gql el cual permite interpretar el schema.
+import { ApolloServer, gql } from "apollo-server-express";
 
 import resolvers from "./resolvers";
 import { Curso, Profesor } from "./schemas";
 
 // Creacion del schema, es importante declarar
 // el Query root ya que este indica el endpoint
-const ROOT_QUERY = `
+const ROOT_QUERY = gql`
     # **Busqueda
     union ResultadoBusqueda = Profesor | Curso
 
@@ -20,7 +20,7 @@ const ROOT_QUERY = `
         profesor(id: Int): Profesor
         buscar(query: String!): [ResultadoBusqueda]
     }
-    
+    # **Mutaciones disponibles dentro del proyecto
     type Mutation {
         profesorAdd(profesor: newProfesor): Profesor
         profesorEdit(id: Int!, profesor: editProfesor): Profesor
@@ -38,7 +38,7 @@ const ROOT_QUERY = `
  * Permite que el esquema declarado se tradusca
  * a un esquema de GQL
  */
-const SCHEMA = makeExecutableSchema({
+const SCHEMA = new ApolloServer({
     // Referencia al schema creados
     typeDefs: [
         ROOT_QUERY,
@@ -47,6 +47,11 @@ const SCHEMA = makeExecutableSchema({
     ],
     // Referencia a los resolvers.
     resolvers,
+    formatError: error => ({
+        errorCode: "JMZ-DB",
+        name: error.name,
+        mensaje: error.message,
+    }),
 });
 
 export default SCHEMA;
