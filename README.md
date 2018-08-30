@@ -137,7 +137,25 @@ o
 ```
 > 📝 Nota: El servidor se ejecuta en la url http://localhost:3000,
 
-Al termino de los pasos anteriores tendremos el proyecto en ejecucion.
+Al termino de los pasos anteriores tendremos el proyecto en ejecución.
+
+## Deployment 📦
+
+Es importante mencionar que el proyecto cuenta con **tags** que facilita el movimiento entre las etapas del desarrollo realizado durante el curso.
+
+* **[Configuración inicial](https://github.com/OrcaPracticas/GQL/tree/Inicial)**
+* **[Creacion del Schema](https://github.com/OrcaPracticas/GQL/tree/Schema)**
+* **[Creacion de Resolvers](https://github.com/OrcaPracticas/GQL/tree/Resolvers)**
+* **[Creacion de Mocks Dimanicos](https://github.com/OrcaPracticas/GQL/tree/Mocks)**
+* **[Integracion de base de datos](https://github.com/OrcaPracticas/GQL/tree/BD)**
+* **[Modularización](https://github.com/OrcaPracticas/GQL/tree/Modularizacion)**
+* **[Busqueda y manejo de errores](https://github.com/OrcaPracticas/GQL/tree/Busqueda)**
+* **[Integración con React](https://github.com/OrcaPracticas/GQL/tree/React)**
+* **[Integración con apollo](https://github.com/OrcaPracticas/GQL/tree/Apollo)**
+
+Cada una de las faces correspondientes al desarrollo generado durante el cursó, cada fase cuenta con su **Release** el cual tiene realción con un **PullRequest** que a su vez tiene relación con un **Milestones** el cuales tienen realación con **issues** y estos tienen relacionados los **commits** generados.
+
+
 
 ## Construido con 🛠️
 
