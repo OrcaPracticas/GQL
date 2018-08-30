@@ -1,0 +1,17 @@
+{
+    "presets" : [
+        [
+            "env",
+            {
+                "targets": {
+                    "node": "current"
+                }
+            }
+        ],
+        "minify",
+        "stage-1"
+    ],
+    "plugins" : [
+         ["inline-json-import", {}]
+    ]
+}
