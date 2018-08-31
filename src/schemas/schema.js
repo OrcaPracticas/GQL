@@ -5,20 +5,30 @@ import { ApolloServer, gql } from "apollo-server-express";
 import resolvers from "./resolvers";
 import { Curso, Profesor } from "./schemas";
 
+
 // Creacion del schema, es importante declarar
 // el Query root ya que este indica el endpoint
 const ROOT_QUERY = gql`
     # **Busqueda
     union ResultadoBusqueda = Profesor | Curso
 
+    type User {
+        id: ID!
+        name: String
+        age: Int
+        email: String
+    }
+
     # **Root type Query** _endpoint_ principal
     type Query {
+        user: [User]
         cursos: [Curso]
         profesores: [Profesor]
         comentarios: [Comentario]
         curso(id: Int): Curso
         profesor(id: Int): Profesor
         buscar(query: String!): [ResultadoBusqueda]
+        findUSer(id: Int): User
     }
     # **Mutaciones disponibles dentro del proyecto
     type Mutation {

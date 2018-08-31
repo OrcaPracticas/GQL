@@ -1,5 +1,8 @@
 // Importacion de modelos referentes a la base de datos.
-import { ModeloCurso, ModeloProfesor, ModeloComentario } from "../../DB/models";
+import {
+    ModeloCurso, ModeloProfesor,
+    ModeloComentario, ModeloUser,
+} from "../../DB/models";
 import BuildMutation from "./BuildMutation";
 
 /**
@@ -9,6 +12,7 @@ const RESOLVERS = {
     Query: {
         // permite extraer los datos de la DB y
         // con eager se le indica que relaciones tiene cada tabla.
+        user: () => ModeloUser.list(),
         cursos: () => ModeloCurso.query().eager("[profesor, comentarios]"),
         profesores: () => ModeloProfesor.query().eager("cursos"),
         comentarios: () => ModeloComentario.query().eager(),
@@ -20,6 +24,7 @@ const RESOLVERS = {
                 ModeloCurso.query().findById(2),
             ];
         },
+        findUSer: (_, args) => ModeloUser.find(args.id),
     },
     ResultadoBusqueda: {
         __resolveType: object => ((object.nombre) ? "Profesor" : "Curso"),
