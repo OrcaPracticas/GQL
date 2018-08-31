@@ -37,7 +37,7 @@
     "scripts": {
         "start:gql": "nodemon ./launcher",
         "start:app": "react-scripts start",
-        "star:json": "json-server --watch ./src/DB/db.json --port 8081",
+        "start:json": "json-server --watch ./src/DB/db.json --port 8081",
         "db:migrate": "knex migrate:latest --knexfile=src/DB/knexfile.js",
         "db:seed": "knex seed:run --knexfile=src/DB/knexfile.js"
     },

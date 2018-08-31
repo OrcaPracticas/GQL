@@ -124,8 +124,7 @@ pulsamo el boton **play** esto ya nos tiene que estar lanzando resultados.
 
 #### Paso 7
 
-Procederemos a levanta al **App** que se conectara al servidor de **GQL**, para esto ejecutaremos el comando siguiente.
-
+Procederemos a levantar al **App** que se conectara al servidor de **GQL**, para esto ejecutaremos el comando siguiente, (Es necesario abrir una nueva venta en la terminal).
 
 ```bash
     $ yarn start:app
@@ -138,6 +137,33 @@ o
 > 📝 Nota: El servidor se ejecuta en la url http://localhost:3000,
 
 Al termino de los pasos anteriores tendremos el proyecto en ejecución.
+
+#### Paso 8
+
+También podemos probar la consulta a un **API REST** , para esto ejecutaremos el comando siguiente, (Es necesario abrir una nueva venta en la terminal).
+
+```bash
+    $ yarn start:json
+```
+o
+
+```bash
+    $ npm run start:json
+```
+> 📝 Nota: El servidor se ejecuta en la url http://localhost:8081,
+
+En el servidor de *GQL* podemos ejecutar el Comenzando
+
+```javaScript
+{
+	findUSer(id: 2) {
+        id
+        name
+        age
+        email
+  }
+}
+```
 
 ## Deployment 📦
 
@@ -152,10 +178,9 @@ Es importante mencionar que el proyecto cuenta con **tags** que facilita el movi
 * **[Busqueda y manejo de errores](https://github.com/OrcaPracticas/GQL/tree/Busqueda)**
 * **[Integración con React](https://github.com/OrcaPracticas/GQL/tree/React)**
 * **[Integración con apollo](https://github.com/OrcaPracticas/GQL/tree/Apollo)**
+* **[Integración con Api Rest](https://github.com/OrcaPracticas/GQL/tree/api)**
 
 Cada una de las faces correspondientes al desarrollo generado durante el cursó, cada fase cuenta con su **Release** el cual tiene realción con un **PullRequest** que a su vez tiene relación con un **Milestones** el cuales tienen realación con **issues** y estos tienen relacionados los **commits** generados.
-
-
 
 ## Construido con 🛠️
 
@@ -179,7 +204,7 @@ Esta practica se construyo utilizando las siguientes tecnologias.
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia MIT mira el archivo [LICENSE.md](LICENSE.md) para detalles.
+Este proyecto está bajo la Licencia MIT mira el archivo [LICENSE.md](LICENSE) para detalles.
 
 ⌨️ con ❤️ por [Konami12](https://github.com/konami12) 😊
 
