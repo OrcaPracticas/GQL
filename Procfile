@@ -1,1 +1,1 @@
-web: npm start:gql
+web: node launcher.js
