@@ -3,7 +3,7 @@ import Axios from "axios";
 class User {
     constructor() {
         this.api = Axios.create({
-            baseURL: "https://orca-practicas-api.herokuapp.com",
+            baseURL: "https://orca-practicas-api.herokuapp.com/api",
         });
     }
 
