@@ -3,7 +3,7 @@ import Schema from "./schemas";
 import "./DB/setup";
 
 const SERVER = Express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 // ruta por defecto graphql
 Schema.applyMiddleware({ app: SERVER });
